@@ -18,3 +18,4 @@
 - `anon/public key` 会出现在浏览器，这是 Supabase 前端的正常用法。数据库表不开放客户端读取，调用仅限两个校验 RPC。绝不要把 `service_role` key 放入网站。
 - 邀请密码应使用不易猜测的随机字符串。公开网站的密码入口是访问控制，不是用户身份认证；这套实现没有按 IP 限速。
 - 结果页面不保存个人身份信息。测评次数只由 Supabase 数据库保存。
+- 需要批量生成更多兑换码时，在 SQL Editor 运行 `supabase/issue_codes.sql` 一次，然后执行 `select * from public.issue_test_codes(10);`。每个新码可完成 3 次，明文只在结果中显示一次，数据库只存哈希。
